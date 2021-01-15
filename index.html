@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portaria</title>
+
+    <!--Importa Favicon-->
+    <link rel="shortcut icon" href="/img/icon.png" type="image/x-icon">
+
+    <!--Importa links CSS-->
+    <link rel="stylesheet" href="/css/index.css">
+
+    <!--Importa Scripts JavaScript-->
+    <script src="/javascript/header.js"></script>
+    <script src="/javascript/dataHora.js"></script>
+    <script src="/javascript/script.js"></script>
+    <script src="/javascript/claviculrario.js"></script>
+    <script src="/javascript/comunicados.js"></script>
+    <script src="/javascript/correios.js"></script>
+    <script src="/javascript/servicos.js"></script>
+    <script src="/javascript/visitas.js"></script>
+    <script src="/javascript/login.js"></script>
+
+</head>
+<body onload="carregaData(), startTime()">
+
+    <header id="cabecalho">
+        <div id="left">
+            <button type="button">Procedimentos</button>
+            <button type="button">Horários</button>
+            <button type="button">Contatos</button>
+        </div>
+
+        <figure>
+            <img src="img/LogoGardenPlaza-2000px.png" alt="">
+        </figure>
+
+        <div id="right">
+            <button type="button">Condôminos</button>
+            <button type="button">Fornecedores</button>
+            <button type="button" onclick="login()">ADM</button>
+        </div>
+    </header>
+
+    <main id="principal">
+
+        <aside id="menu-lateral">
+            <menu>
+                <ul>
+                    <li>
+                        <div>
+                            <img id="img1" src="/img/LogoGardenPlaza.png" alt="" onclick="openNovoComunicado()">
+                            <img id="img2" src="/img/comunicado.png" alt="" onclick="openNovoComunicado()">
+                        </div>
+                        <button type="button" onclick="apareceTabelaComunicado()">comunicado</button>
+                    </li>
+        
+                    <li>
+                        <div>
+                            <img id="img1" src="/img/LogoGardenPlaza.png" alt="" onclick="openNovoPrestador()">
+                            <img id="img2" src="/img/servico.png" alt="" onclick="openNovoPrestador()">
+                        </div>
+                        <button type="button" onclick="apareceTabelaServicos()">Serviços</button>
+                    </li>
+        
+                    <li>
+                        <div>
+                            <img id="img1" src="/img/LogoGardenPlaza.png" alt="" onclick="openNovoClaviculario()">
+                            <img id="img2" src="/img/chave.png" alt="" onclick="openNovoClaviculario()">
+                        </div>
+                        <button type="button" onclick="apareceTabelaClaviculario()">Chaves</button>
+                    </li>
+        
+                    <li>
+                        <div>
+                            <img id="img1" src="/img/LogoGardenPlaza.png" alt="" onclick="openNovaEncomenda()">
+                            <img id="img2" src="/img/caixa-de-correio.png" alt="" onclick="openNovaEncomenda()">
+                        </div>
+                        <button type="button" onclick="apareceTabelaCorreios()">Correios</button>
+                    </li>
+        
+                    <li>
+                        <div>
+                            <img id="img1" src="/img/LogoGardenPlaza.png" alt="" onclick="openNovaVisita()">
+                            <img id="img2" src="/img/visitante.png" alt="" onclick="openNovaVisita()">
+                        </div>
+                        <button type="button" onclick="apareceTabelaVisita()">Visitas</button>
+                    </li>
+        
+                    <li>
+                        <div>
+                            <img id="img1" src="/img/LogoGardenPlaza.png" alt="">
+                            <img id="img2" src="/img/comunicado.png" alt="">
+                        </div>
+                        <button type="button">Reservas</button>
+                    </li>
+                </ul>
+            </menu>
+        </aside>
+
+        <section id="cabecalhoDisplay">
+
+            <div id="dataHora">
+                <div> <p id="nomePorteiro">Necessário fazer login!</p> </div>
+                <div>
+                    <img src="img/pagina-de-calendario-do-dia-6-de-um-mes.png" alt="">
+
+                    <div id="data">01/01/2001</div>
+                </div>
+
+                <div>
+                    <img src="img/relogio-de-parede-de-formato-circular.png" alt="">
+
+                    <div id="hora">00:00:00</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section id="display">
+
+            <div id="sessao">
+
+                <section id="box">
+    
+                    <section id="novoComunicado" class="displayNone">
+    
+                        <h2>Novo Comunicado</h2>
+    
+                        <form action="">
+    
+                            <table>
+    
+                                <tr>
+                                    <th>Categoria</th>
+                                    <th>Comunicado</th>
+                                    <th>...</th>
+                                </tr>
+    
+                                <tr>
+                                    <td>
+                                        <select name="categoria" id="categoria">
+                                            <option value="Comunicado Interno">Comunicado Interno</option>
+                                            <option value="Ocorrência">Ocorrência</option>
+                                            <option value="Infração">Infração</option>
+                                        </select>
+                                    </td>
+    
+                                    <td>
+                                        <textarea name="comunicado" id="comunicado" cols="50" rows="3"></textarea>
+                                    </td>
+    
+                                </tr>
+                            </table>
+    
+                            <div class="button">
+                                <button type="reset" onclick="adicionaLinhaComunicados('tblComunicados')">Adicionar</button>
+                                <button type="reset" onclick="closedNovoComunicado()">Fechar</button>
+                            </div>
+                        </form>
+    
+                    </section>
+    
+                    <section id="novoServico" class="displayNone">
+    
+                        <h2>Novo Serviço</h2>
+    
+                        <form action="">
+    
+                            <table>
+    
+                                <tr>
+                                    <th>Local</th>
+                                    <th>Prestador</th>
+                                    <th>Função</th>
+                                    <th>Empresa</th>
+                                    <th>...</th>
+                                </tr>
+    
+                                <tr>
+                                    <td>
+                                        <select name="local" id="local">
+                                            <option value="Portaria">Portaria</option>
+                                            <option value="Elevadores">Elevadores</option>
+                                            <option value="Estacionamento Térrio">Estacionamento Térrio</option>
+                                            <option value="Estacionamento G1">Estacionamento G1</option>
+                                            <option value="Estacionamento G2">Estacionamento G2</option>
+                                            <option value="Deck">Deck</option>
+                                            <option value="Sala de Espera">Sala de Espera</option>
+                                            <option value="Espaço Teen">Espaço Teen</option>
+                                            <option value="Brinquedoteca">Brinquedoteca</option>
+                                            <option value="Academia">Academia</option>
+                                            <option value="Pscina Aquecida">Pscina Aquecida</option>
+                                            <option value="Sauna">Sauna</option>
+                                            <option value="Pscina">Pscina</option>
+                                            <option value="Quiosque Açaí">Quiosque Açaí</option>
+                                            <option value="Quiosque Banana">Quiosque Banana</option>
+                                            <option value="Mini Golf">Mini Golf</option>
+                                            <option value="Lounge">Lounge</option>
+                                            <option value="Salão de Festas">Salão de Festas</option>
+                                            <option value="Cinema">Cinema</option>
+                                            <option value="Quadra Poliesportiva">Quadra Poliesportiva</option>
+                                            <option value="Heliporto">Heliporto</option>
+    
+                                            <option value="AP-101">101</option>
+                                            <option value="AP-102">102</option>
+                                            <option value="AP-201">201</option>
+                                            <option value="AP-202">202</option>
+                                            <option value="AP-301">301</option>
+                                            <option value="AP-302">302</option>
+                                            <option value="AP-401">401</option>
+                                            <option value="AP-402">402</option>
+                                            <option value="AP-501">501</option>
+                                            <option value="AP-502">502</option>
+                                            <option value="AP-601">601</option>
+                                            <option value="AP-602">602</option>
+                                            <option value="AP-701">701</option>
+                                            <option value="AP-702">702</option>
+                                            <option value="AP-801">801</option>
+                                            <option value="AP-802">802</option>
+                                            <option value="AP-901">901</option>
+                                            <option value="AP-902">902</option>
+                                            <option value="AP-1001">1001</option>
+                                            <option value="AP-1002">1002</option>
+                                            <option value="AP-1101">1101</option>
+                                            <option value="AP-1102">1102</option>
+                                            <option value="AP-1201">1201</option>
+                                            <option value="AP-1202">1202</option>
+                                            <option value="AP-1301">1301</option>
+                                            <option value="AP-1302">1302</option>
+                                            <option value="AP-1401">1401</option>
+                                            <option value="AP-1402">1402</option>
+                                            <option value="AP-1501">1501</option>
+                                            <option value="AP-1502">1502</option>
+                                            <option value="AP-1601">1601</option>
+                                            <option value="AP-1602">1602</option>
+                                            <option value="AP-1701">1701</option>
+                                            <option value="AP-1702">1702</option>
+                                            <option value="AP-1801">1801</option>
+                                            <option value="AP-1802">1802</option>
+                                            <option value="AP-1901">1901</option>
+                                            <option value="AP-1902">1902</option>
+                                            <option value="AP-2001">2001</option>
+                                            <option value="AP-2002">2002</option>
+                                            <option value="AP-2101">2101</option>
+                                            <option value="AP-2102">2102</option>
+                                            <option value="AP-2201">2201</option>
+                                            <option value="AP-2202">2202</option>
+                                            <option value="AP-2301">2301</option>
+                                            <option value="AP-2302">2302</option>
+                                            <option value="AP-2401">2401</option>
+                                            <option value="AP-2402">2402</option>
+                                            <option value="AP-2501">2501</option>
+                                            <option value="AP-2502">2502</option>
+                                            <option value="AP-2601">2601</option>
+                                            <option value="AP-2602">2602</option>
+                                            <option value="AP-301">2701</option>
+                                        </select>
+                                    </td>
+    
+                                    <td>
+                                        <input type="text" name="prestador" id="prestador">
+                                    </td>
+    
+                                    <td>
+                                        <select name="funcao" id="funcao">
+                                            <option value="Técnico Internet">Técnico Internet</option>
+                                            <option value="Técnico Elétrica">Técnico Elétrica</option>
+                                            <option value="Técnico Hidráulica">Técnico Hidráulica</option>
+                                            <option value="Pedreiro">Pedreiro</option>
+                                            <option value="Pintor">Pintor</option>
+                                            <option value="Diarista">Diarista</option>
+                                            <option value="Estofaria">Estofaria</option>
+                                            <option value="Lavanderia">Lavanderia</option>
+                                            <option value="Pet">Pet</option>
+                                            <option value="Babá">Babá</option>
+                                            <option value="Vidraceiro">Vidraceiro</option>
+                                            <option value="Técnico Gás">Técnico Gás</option>
+                                            <option value="Eletricista">Mecânico</option>
+                                            <option value="Entregador">Entregador</option>
+                                            <option value="Outros">Outros</option>
+                                        </select>
+                                    </td>
+    
+                                    <td>
+                                        <input type="text" name="empresa" id="empresa">
+                                    </td>
+                                </tr>
+                            </table>
+    
+                            <div class="button">
+                                <button type="reset" onclick="adicionaLinhaServicos('tblServicos')">Adicionar</button>
+                                <button type="reset" onclick="closedNovoPrestador()">Fechar</button>
+                            </div>
+                        </form>
+    
+                    </section>
+    
+                    <section id="novoClaviculario" class="displayNone">
+    
+                        <h2>Saída de Chaves</h2>
+    
+                        <form action="">
+    
+                            <table>
+    
+                                <tr>
+                                    <th>Chave</th>
+                                    <th>Responsável</th>
+                                    <th>Função</th>
+                                    <th>...</th>
+                                </tr>
+    
+                                <tr>
+                                    <td>
+                                        <select name="chave" id="chave">
+                                            <option value="01-Lixeira">01-Lixeira</option>
+                                            <option value="02-Automação">02-Automação</option>
+                                            <option value="03-Geradores">03-Geradores</option>
+                                            <option value="05-Heliponto">05-Heliponto</option>
+    
+                                            <option value="06-">06-</option>
+                                            <option value="07-">07-</option>
+                                            <option value="08-">08-</option>
+                                            <option value="09-">09-</option>
+    
+                                            <option value="10-">10-</option>
+                                            <option value="11-">11-</option>
+                                            <option value="12-">12-</option>
+                                            <option value="Cartão">Cartão</option>
+    
+                                        </select>
+                                    </td>
+    
+                                    <td>
+                                        <input type="text" name="responsavel" id="responsavel">
+                                    </td>
+    
+                                    <td>
+                                        <select name="funcaoChave" id="funcaoChave">
+                                            <option value="Colaborador">Colaborador</option>
+                                            <option value="Zelador">Zelador</option>
+                                            <option value="Prestador de Serviço">Prestador de Serviço</option>
+                                            <option value="Condomínio">Condômino</option>
+                                            <option value="Outros">Outros</option>
+                                        </select>
+                                    </td>
+                                </tr>
+                            </table>
+    
+                            <div class="button">
+                                <button type="reset"
+                                    onclick="adicionaLinhaClaviculario('tblClaviculario')">Adicionar</button>
+                                <button type="reset" onclick="closedNovoClaviculario()">Fechar</button>
+                            </div>
+                        </form>
+    
+                    </section>
+    
+                    <section id="novaEncomenda" class="displayNone">
+    
+                        <h2>Novo Correio</h2>
+    
+                        <form action="">
+    
+                            <table>
+                                <tr>
+                                    <th>Destinatário</th>
+                                    <th>Código de Rastreio</th>
+                                    <th>Tipo</th>
+                                    <th>...</th>
+                                </tr>
+    
+                                <tr>
+    
+    
+                                    <td>
+                                        <select name="destinatario" id="destinatario">
+                                            <option value="Condomínio">Condomínio</option>
+                                            <option value="Dataceni">Dataceni</option>
+                                            <option value="AP-101">101</option>
+                                            <option value="AP-102">102</option>
+                                            <option value="AP-201">201</option>
+                                            <option value="AP-202">202</option>
+                                            <option value="AP-301">301</option>
+                                            <option value="AP-302">302</option>
+                                            <option value="AP-401">401</option>
+                                            <option value="AP-402">402</option>
+                                            <option value="AP-501">501</option>
+                                            <option value="AP-502">502</option>
+                                            <option value="AP-601">601</option>
+                                            <option value="AP-602">602</option>
+                                            <option value="AP-701">701</option>
+                                            <option value="AP-702">702</option>
+                                            <option value="AP-801">801</option>
+                                            <option value="AP-802">802</option>
+                                            <option value="AP-901">901</option>
+                                            <option value="AP-902">902</option>
+                                            <option value="AP-1001">1001</option>
+                                            <option value="AP-1002">1002</option>
+                                            <option value="AP-1101">1101</option>
+                                            <option value="AP-1102">1102</option>
+                                            <option value="AP-1201">1201</option>
+                                            <option value="AP-1202">1202</option>
+                                            <option value="AP-1301">1301</option>
+                                            <option value="AP-1302">1302</option>
+                                            <option value="AP-1401">1401</option>
+                                            <option value="AP-1402">1402</option>
+                                            <option value="AP-1501">1501</option>
+                                            <option value="AP-1502">1502</option>
+                                            <option value="AP-1601">1601</option>
+                                            <option value="AP-1602">1602</option>
+                                            <option value="AP-1701">1701</option>
+                                            <option value="AP-1702">1702</option>
+                                            <option value="AP-1801">1801</option>
+                                            <option value="AP-1802">1802</option>
+                                            <option value="AP-1901">1901</option>
+                                            <option value="AP-1902">1902</option>
+                                            <option value="AP-2001">2001</option>
+                                            <option value="AP-2002">2002</option>
+                                            <option value="AP-2101">2101</option>
+                                            <option value="AP-2102">2102</option>
+                                            <option value="AP-2201">2201</option>
+                                            <option value="AP-2202">2202</option>
+                                            <option value="AP-2301">2301</option>
+                                            <option value="AP-2302">2302</option>
+                                            <option value="AP-2401">2401</option>
+                                            <option value="AP-2402">2402</option>
+                                            <option value="AP-2501">2501</option>
+                                            <option value="AP-2502">2502</option>
+                                            <option value="AP-2601">2601</option>
+                                            <option value="AP-2602">2602</option>
+                                            <option value="AP-301">2701</option>
+                                        </select>
+                                    </td>
+    
+                                    <td>
+                                        <input type="text" name="codigoRastreio" id="codigoRastreio">
+                                    </td>
+    
+                                    <td>
+                                        <select name="tipoEmbalagem" id="tipoEmbalagem">
+                                            <option value="Malote">Malote</option>
+                                            <option value="Envelope">Envelope</option>
+                                            <option value="Pacote">Pacote</option>
+                                            <option value="Caixa">Caixa</option>
+                                            <option value="Sacola">Sacola</option>
+                                            <option value="Outros">Outros</option>
+                                        </select>
+                                    </td>
+    
+                                </tr>
+                            </table>
+    
+                            <div class="button">
+                                <button type="reset" onclick="adicionaLinhaCorreios('tblCorreios')">Adicionar</button>
+                                <button type="reset" onclick="closedNovaEncomenda()">Fechar</button>
+                            </div>
+                        </form>
+                    </section>
+    
+                    <section id="novaVisita" class="displayNone">
+    
+                        <h2>Nova Visita</h2>
+    
+                        <form action="">
+    
+                            <table>
+    
+                                <tr>
+                                    <th>Categoria</th>
+                                    <th>Comunicado</th>
+                                    <th>...</th>
+                                </tr>
+    
+                                <tr>
+                                    <td>
+                                        <select name="categoria" id="categoria">
+                                            <option value="Comunicado Interno">Comunicado Interno</option>
+                                            <option value="Ocorrência">Ocorrência</option>
+                                            <option value="Infração">Infração</option>
+                                        </select>
+                                    </td>
+    
+                                    <td>
+                                        <textarea name="comunicado" id="comunicado" cols="50" rows="3"></textarea>
+                                    </td>
+    
+                                </tr>
+                            </table>
+    
+                            <div class="button">
+                                <button type="reset" onclick="adicionaLinhaVisita('tblVisita')">Adicionar</button>
+                                <button type="reset" onclick="closedNovaVisita()">Fechar</button>
+                            </div>
+                        </form>
+    
+                    </section>
+    
+                </section>
+    
+                <section id="principal">
+    
+                    <div id="comunicados" class="tabelas">
+    
+                        <h2>Comunicados <button>Histórico</button> <button type="button" onclick="fechaComunicado()">Fechar</button> </h2>
+    
+                        <div id="tabelaComunicados">
+                            <section>
+                                <table id="tblComunicados">
+                                    <tr>
+                                        <th>Data/Hora</th>
+                                        <th>Categoria</th>
+                                        <th>Comunicado</th>
+                                        <th>Inserido por</th>
+                                        <th>Remover</th>
+                                    </tr>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+    
+                    <div id="servicos" class="tabelas">
+    
+                        <h2>Serviços <button>Histórico</button> <button type="button" onclick="fechaServicos()">Fechar</button> </h2>
+    
+                        <div id="tabelaServicos">
+                            <section>
+                                <table id="tblServicos">
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Local</th>
+                                        <th>Prestador</th>
+                                        <th>Função</th>
+                                        <th>Empresa</th>
+                                        <th>Remover</th>
+                                    </tr>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+    
+                    <div id="claviculario" class="tabelas">
+    
+                        <h2>Chaves <button>Histórico</button> <button type="button" onclick="fechaClaviculario()">Fechar</button> </h2>
+    
+                        <div id="tabelaClaviculario">
+                            <section>
+                                <table id="tblClaviculario">
+                                    <tr>
+                                        <th>Data Saída</th>
+                                        <th>Chave</th>
+                                        <th>Cedido por</th>
+                                        <th>Responsável</th>
+                                        <th>Função</th>
+                                        <th>Devolver</th>
+                                    </tr>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+    
+                    <div id="correios" class="tabelas">
+    
+                        <h2>Correios <button>Histórico</button> <button type="button" onclick="fechaCorreios()">Fechar</button> </h2>
+    
+                        <div id="tabelaCorreios">
+                            <section>
+                                <table id="tblCorreios">
+                                    <tr>
+                                        <th>Data</th>
+                                        <th>Porteiro</th>
+                                        <th>Destinatário</th>
+                                        <th>Código de Rastreio</th>
+                                        <th>Tipo</th>
+                                    </tr>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+    
+                    <div id="visita" class="tabelas">
+    
+                        <h2>Visitas <button>Histórico</button> <button type="button" onclick="fechaVisita()">Fechar</button> </h2>
+    
+                        <div id="tabelaVisita">
+                            <section>
+                                <table id="tblVisita">
+                                    <tr>
+                                        <th>Data/Hora</th>
+                                        <th>Categoria</th>
+                                        <th>Comunicado</th>
+                                        <th>Remover</th>
+                                    </tr>
+                                </table>
+                            </section>
+                        </div>
+                    </div>
+    
+                </section>
+    
+            </div>
+
+        </section>
+
+    </main>
+    
+</body>
+</html>

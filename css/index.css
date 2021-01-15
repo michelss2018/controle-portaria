@@ -1,0 +1,516 @@
+@charset "utf-8";
+
+/* Fontes Importadas */
+@font-face{
+    font-family: goldmanRegular;
+    src: url(../fonts/Goldman/Goldman-Regular.ttf);
+}
+
+@font-face{
+    font-family: montserrat;
+    src: url(../fonts/Montserrat/Montserrat-Regular.ttf);
+}
+
+@font-face{
+    font-family: orbitron;
+    src: url(../fonts/Orbitron/static/Orbitron-Regular.ttf);
+}
+
+/* CONFIGURAÇÕES GLOBAIS */
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.displayNone{
+    display: none;
+}
+
+.tabelas{
+    display: none;
+}
+
+main#boxMain{
+    transition: 3s;
+    display: none;
+}
+
+/* CONFIGURAÇÕES DO CORPO DO SITE */
+body{
+    width: 100%;
+    height: auto;
+    background-color: rgb(46, 46, 46);
+    font-family: montserrat;
+}
+
+/* CONFIGURAÇÕES DO CABEÇALHO */
+header#cabecalho{
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 0.5% 0;
+    background-color: rgb(0, 0, 0);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border-bottom: 2px solid rgb(255, 255, 255);
+}
+
+header#cabecalho div{
+    position: relative;
+    width: 45%;
+    height: auto;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+header#cabecalho div button{
+    margin: auto;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 14pt;
+    text-transform: capitalize;
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header#cabecalho div a:hover{
+    background-color: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    box-shadow: 5px 5px 20px rgba(0, 0, 0, 0.2);
+}
+
+header#cabecalho figure{
+    position: relative;
+    width: 10%;
+    height: auto;
+    margin: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header#cabecalho figure img{
+    position: relative;
+    width: 80%;
+    height: auto;
+    margin: auto;
+    /*border-radius: 100%;
+    border: 4px solid rgb(255, 255, 255);*/
+}
+
+/* CONFIGURAÇÕES DA SESSÃO PRINCIPAL */
+main#principal{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+/* CONFIGURAÇÕES DO MENU */
+menu{
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 0;
+    text-align: left;
+}
+
+menu ul{
+    position: relative;
+    width: 98%;
+    height: auto;
+    margin: 5% auto 0 2%;
+    padding: 0;
+    text-align: left;
+    list-style: none;
+}
+
+menu ul li{
+    position: relative;
+    width: 80%;
+    height: 55px;
+    margin: 3% auto;
+    border: 2px solid rgb(255, 255, 255);
+    border-bottom-right-radius: 15%;
+    border-top-right-radius: 5px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgb(0, 0, 0);
+}
+
+menu ul li div{
+    position: relative;
+    width: 48px;
+    height: 48px;
+    margin: auto auto auto -10%;
+    background-color: rgb(0, 0, 0);
+    border-radius: 100%;
+    border-left: 2px solid rgb(255, 255, 255);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+menu ul li img{
+    position: absolute;
+    width: 90%;
+    height: auto;
+    margin: auto;
+    transition: 1s;
+    cursor: pointer;
+}
+
+menu ul li:hover #img1{
+    transform: rotateY(180deg);
+    opacity: 0;
+}
+
+menu ul li #img2{
+    opacity: 0;
+    background-color: rgb(255, 255, 255);
+    border-radius: 100%;
+    padding: 0;
+}
+
+menu ul li:hover #img2{
+    opacity: 1;
+    transform: rotateY(180deg);
+}
+
+menu ul li button{
+    text-decoration: none;
+    margin: auto 5% auto auto;
+    color: rgb(255, 255, 255);
+    font-size: 15pt;
+    font-weight: bolder;
+    text-transform: capitalize;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+}
+
+/* CONFIGURAÇÕES DA SESSÃO PRINCIPAL - CABEÇALHO DISPLAY */
+section#cabecalhoDisplay{
+    position: fixed;
+    z-index: 1;
+    top: 19.2%;
+    left: auto;
+    right: 0.1%;
+    width: 78.2%;
+    height: auto;
+    margin: 0.05% 2% auto auto;
+    display: block;
+}
+
+section#cabecalhoDisplay div{
+    width: 100%;
+    height: auto;
+    margin: auto;
+    padding: 0.5%;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    border-bottom-right-radius: 20%;
+    border-bottom-left-radius: 20%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section#cabecalhoDisplay div div:nth-child(1){
+    width: 50%;
+}
+
+section#cabecalhoDisplay div div:nth-child(2){
+    width: 25%;
+}
+
+section#cabecalhoDisplay div div:nth-child(3){
+    width: 25%;
+}
+
+section#cabecalhoDisplay div p{
+    width: 100%;
+    height: auto;
+    text-align: center;
+    font-size: 18pt;
+    color: rgb(255, 255, 255);
+    font-weight: bolder;
+}
+
+section#cabecalhoDisplay div img{
+    width: 15%;
+    margin: auto 8px auto auto;
+}
+
+section#cabecalhoDisplay div div{
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+}
+
+section#cabecalhoDisplay div div div{
+    width: 100%;
+    height: auto;
+    margin: auto auto auto 0;
+    text-align: left;
+    font-size: 18pt;
+    font-weight: bolder;
+    color: rgb(255, 255, 255);
+    border: none;
+}
+
+section#cabecalhoDisplay div#dataHora{
+    position: relative;
+    width: 100%;
+    height: auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* CONFIGURAÇÕES DA SESSÃO PRINCIPAL - SESSÃO DISPLAY */
+section#display{
+    width: 75%;
+    height: auto;
+    margin: 10% 1.05% auto auto;
+    padding: 5% 2%;
+    background-color: rgb(0, 0, 0);
+    border: 2px solid rgb(255, 255, 255);
+}
+
+/* CONFIGURAÇÕES DA SESSÃO PRINCIPAL - MENU LATERAL */
+aside#menu-lateral{
+    position: fixed;
+    z-index: 1;
+    width: 20%;
+    height: auto;
+
+    display: block;
+    top: 19%;
+    left: 0;
+    bottom: auto;
+}
+
+aside#menu-lateral iframe{
+    position: relative;
+    width: 100%;
+    height: 70vh;
+    margin: 0;
+    padding: 0;
+}
+
+/*******************************************************/
+/* Configuração da Div "sessao" */
+div#sessao{
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: 2% auto auto auto;
+    color: rgb(255, 255, 255);
+}
+
+
+/* Configuração da Section "box" */
+section#box{
+    position: relative;
+    width: 100%;
+    height: auto;
+    margin: auto;
+}
+
+section#box section{
+    width: 96%;
+    height: auto;
+    margin-bottom: 7%;
+    padding: 1.5%;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+}
+
+section#box section h2{
+    width: 400px;
+    height: 50px;
+    margin: -5% auto 2% auto;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 10px;
+    background-color: rgba(0, 0, 0, 1);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+section#box section th{
+    font-size: 14pt;
+    margin: auto;
+}
+
+section#box section select{
+    width: 200px;
+    height: 40px;
+    margin: auto;
+    font-size: 13pt;
+    font-family: montserrat;
+    border: 2px solid rgb(255, 255, 255);
+    outline: none;
+    background-color: rgba(0, 0, 0, 1);
+    color: rgb(255, 255, 255);
+}
+
+section#box section textarea{
+    width: 90%;
+    height: auto;
+    margin: auto 2%;
+    padding: 2%;
+    font-size: 13pt;
+    font-family: montserrat;
+    border: 2px solid rgb(255, 255, 255);
+    outline: none;
+    background-color: rgba(0, 0, 0, 1);
+    color: rgb(255, 255, 255);
+}
+
+section#box section div.button{
+    width: 90%;
+    height: auto;
+    margin: 3% auto;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section#box section div.button button{
+    width: 150px;
+    height: 40px;
+    font-size: 18px;
+    font-weight: bolder;
+    border-radius: 5px;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+
+section#box section div.button button:hover{
+    background-color: rgba(128, 255, 0, 0.1);
+}
+
+section#box section input{
+    width: 90%;
+    height: 25px;
+    padding: 2%;
+    outline: none;
+    border: 2px solid rgb(255, 255, 255);
+    background-color: rgba(0, 0, 0, 1);
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    font-family: montserrat;
+}
+
+/********************************************************/
+section#principal{
+    width: 100%;
+    height: auto;
+}
+
+section#principal div{
+    width: 97%;
+    height: auto;
+    padding: 1%;
+    margin-bottom: 7%;
+    border: 2px solid rgb(224, 224, 224);
+    border-radius: 5px;
+    background-color: rgba(128, 255, 0, 0.1);
+}
+
+section#principal div div{
+    width: 95%;
+    height: auto;
+    margin: auto;
+    border: none;
+    background-color: transparent;
+}
+
+section#principal div h2{
+    width: 45%;
+    height: auto;
+    margin: -4.5% auto auto auto;
+    padding: 0.8%;
+    font-size: 20pt;
+    text-align: center;
+    border-radius: 10px;
+    border: 2px solid rgb(224, 224, 224);
+    background-color: rgba(0, 0, 0, 1);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+section#principal div h2 button{
+    padding: 5px 20px;
+    font-size: 11pt;
+    font-weight: bolder;
+    cursor: pointer;
+    background-color: rgba(128, 255, 0, 0.1);
+    color: rgb(255, 255, 255);
+    border-color: rgb(255, 255, 255);
+    border-radius: 5px;
+    outline: none;
+}
+
+section#principal div h2 button:hover{
+    background-color: rgba(128, 255, 0, 0.3);
+}
+
+section#principal table{
+    width: 100%;
+    height: auto;
+}
+w
+section#principal table th{
+    padding: 1%;
+    font-size: 13pt;
+    border-radius: 5px;
+}
+
+section#principal table td{
+    text-align: center;
+    padding: 1%;
+    font-size: 11pt;
+    border: 2px solid rgb(255, 255, 255);
+    border-radius: 5px;
+}
+
+/* Justificando o texto  da aba comunicados */
+section#principal table#tblComunicados td:nth-child(3){
+    width: 50%;
+    text-align: justify;
+} 
